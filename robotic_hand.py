@@ -2,7 +2,11 @@
 # For use with the Machines That Emulate Humans lesson plan available 
 # from Microsoft Education Workshop at http://aka.ms/hackingSTEM
 #
-#  Overview: TODO
+#  Overview:
+#  This code is one half of the Robotic Hand project. It controls servo motors 
+#  on the hand portion using numbers recived over radio from the Glove portion 
+#  of the project. We use 2 micro:bits in this project since the each board 
+#  only supports up to 6 analog/pwm pins.
 #
 #  This project uses a BBC micro:bit microcontroller, information at:
 #  https://microbit.org/

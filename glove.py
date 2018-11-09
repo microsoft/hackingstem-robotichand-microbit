@@ -3,11 +3,12 @@
 # from Microsoft Education Workshop at http://aka.ms/hackingSTEM
 #
 #  Overview:
-#  This code is one half of the Robotic Hand project. It detects analog voltage 
-#  levels which correspond to deformation of velostat flex sensors attached to
-#  the Glove protion of the lesson. It then transmits that data over radio to the 
-#  Robotic Hand. We use 2 micro:bits in this project since the each board only 
-#  supports up to 6 analog/pwm pins.
+#  This code is one half of the Robotic Hand project, the other half is 
+#  robotic_hand.py. It detects analog voltage levels which correspond to 
+#  deformation of velostat flex sensors attached to the Glove protion of the 
+#  lesson. It then transmits that data over radio to the Robotic Hand. We use 2
+#  micro:bits in this project since the each board only supports up to 6 
+#  analog/pwm pins.
 #  
 #  Pins:
 #  0: Thumb
@@ -16,6 +17,10 @@
 #  3: Ring Finger
 #  4: Pinky
 #
+#  Radio Channels:
+#  You can change the radio channel on your micro:bit using Button A to cycle 
+#  down and Button B to cycle up in numbers.
+# 
 #  This project uses a BBC micro:bit microcontroller, information at:
 #  https://microbit.org/ 
 #
@@ -77,14 +82,14 @@ def get_sensor_value(pin, pos):
 #=============================================================================#
 while True:
     # Changes the radio channel
-    if button_a.is_pressed() and chan != 0:
+    while button_a.is_pressed() and chan != 0:
         chan -= 1
         radio.config(channel=chan)
         display.on()
         display.show(chan, delay=500)
         sleep(600)
         display.off()
-    elif button_b.is_pressed() and chan < 83:
+    while button_b.is_pressed() and chan < 83:
         chan += 1
         radio.config(channel=chan)
         display.on()
@@ -98,8 +103,10 @@ while True:
     middle_read = get_sensor_value(pin2, 2)
     ring_read = get_sensor_value(pin3, 3)
     pinky_read = get_sensor_value(pin4, 4)
+    # Create a string of the data to be sent
+    data_to_send = "{},{},{},{},{}".format(thumb_read, index_read, middle_read, ring_read, pinky_read)
     # Send data to radio
-    radio.send("{},{},{},{},{}".format(thumb_read, index_read, middle_read, ring_read, pinky_read))
+    radio.send(data_to_send)
     # Write data to serial, uart is how you call serial on micro:bit
-    uart.write("{},{},{},{},{}".format(thumb_read, index_read, middle_read, ring_read, pinky_read))
+    uart.write(data_to_send)
    

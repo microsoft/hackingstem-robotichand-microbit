@@ -3,10 +3,22 @@
 # from Microsoft Education Workshop at http://aka.ms/hackingSTEM
 #
 #  Overview:
-#  This code is one half of the Robotic Hand project. It controls servo motors 
-#  on the hand portion using numbers recived over radio from the Glove portion 
-#  of the project. We use 2 micro:bits in this project since the each board 
-#  only supports up to 6 analog/pwm pins.
+#  This code is one half of the Robotic Hand project, the other half is 
+#  glove.py. It controls servo motors on the hand portion using numbers recived
+#  over radio from the Glove portion of the project. We use 2 micro:bits in 
+#  this project since the each board only supports up to 6 analog/pwm pins.
+#
+#  Pins:
+#  0: Thumb Servo
+#  1: Index Finger Servo
+#  2: Middle Finger Servo
+#  3: Ring Finger Servo
+#  4: Pinky Servo
+#
+#  Radio Channels:
+#  You can change the radio channel on your micro:bit using Button A to cycle 
+#  down and Button B to cycle up in numbers.
+#  Note: When changing channels the motors may twitch a bit.
 #
 #  This project uses a BBC micro:bit microcontroller, information at:
 #  https://microbit.org/
@@ -25,8 +37,8 @@
 from microbit import *
 import radio
 
-# This class adds servo controls to micro:bit
 class servo:
+    # This class adds servo controls to micro:bit
     def __init__(self, pinNumber, freq=50, min_micro_s=500, max_micro_s=2400, angle=180):
         # Initilize a servo motor
         self.pin = pinNumber
@@ -61,13 +73,6 @@ EOL = '\n' # End of Line Character
 chan = 0 # Defualt channel number for radio
 radio.config(length=64, channel=chan)
 
-#TODO remove?
-# minMaxArray = [[1023,0], [1023,0], [1023,0], [1023,0], [1023,0]]
-
-# smoothingArray = [0] * 5
-# for i in range(5):
-#     smoothingArray[i] = [511] * 16
-
 # Create servo objects for each finger
 thumb = servo(pin0)
 index = servo(pin1)
@@ -79,37 +84,19 @@ def scale(value, inMin, inMax, outMin, outMax):
     # Remaps a value from one min/max range to a different min/max range
     return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
 
-# def getSensorValue(pin, pos):
-#     global minMaxArray
-#     sensorValue = smooth(pin, pos)
-#     print("val: {}".format(sensorValue))
-#     if (sensorValue < minMaxArray[pos][0]):
-#         minMaxArray[pos][0] = sensorValue
-#     print("min: {}".format(minMaxArray[pos][0]))
-#     if (sensorValue > minMaxArray[pos][1]):
-#         minMaxArray[pos][1] = sensorValue
-#     print("max: {}".format(minMaxArray[pos][1]))
-#     try:
-#         sensorValue = scale(sensorValue, minMaxArray[pos][0], minMaxArray[pos][1], 0, 100)
-#     except:
-#         return 0
-#     return sensorValue
-
-# def run_code():
-#     thumbRead = scale(pin0.read_analog(), 0, 1023, 0, 100)
-#     thumb.angle(thumbRead)
-
-# The main program loop
+#=============================================================================#
+#------------------------------Main Program Loop------------------------------#
+#=============================================================================#
 while True:
     # Changes the radio channel
-    if button_a.is_pressed() and chan != 0:
+    while button_a.is_pressed() and chan != 0:
         chan -= 1
         radio.config(channel=chan)
         display.on()
         display.show(chan, delay=500)
         sleep(600)
         display.off()
-    elif button_b.is_pressed() and chan < 83:
+    while button_b.is_pressed() and chan < 83:
         chan += 1
         radio.config(channel=chan)
         display.on()
@@ -118,10 +105,10 @@ while True:
         display.off()
     
     # Listen for radio data
-    data_in = radio.receive() 
+    data_in = radio.receive()
     
     # Seperate the incoming radio data
-    if(data_in):
+    if (data_in):
         parsed_data = data_in.split(",")
 
     # Scale the incoming data to degrees for servo rotation

@@ -123,3 +123,4 @@ while True:
         ring.write_angle(ring_read)
         pinky_read = scale(float(parsed_data[4]), 0, 100, 5, 175)
         pinky.write_angle(pinky_read)
+        uart.write(data_in + EOL)

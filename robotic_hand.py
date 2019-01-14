@@ -1,4 +1,4 @@
-# ------------__ Hacking STEM – robotic_hand.py – micro:bit __-----------
+# ------------__ Hacking STEM - robotic_hand.py - micro:bit __-----------
 # For use with the Machines That Emulate Humans lesson plan available 
 # from Microsoft Education Workshop at http://aka.ms/hackingSTEM
 #
@@ -27,10 +27,10 @@
 #  requests are welcome! For source code and bug reports see:
 #  http://github.com/[TODO github path to Hacking STEM]
 # 
-#  Servo Code Copyright (c) 2016 Microbit Playground
-#  TODO add Arduino copyright and CC license
 #  Copyright 2018, Adi Azulay
 #  Microsoft EDU Workshop - HackingSTEM
+#  Servo Code Copyright (c) 2016 Microbit Playground
+#
 #  MIT License terms detailed in LICENSE.txt
 # ===---------------------------------------------------------------===
 
@@ -123,4 +123,5 @@ while True:
         ring.write_angle(ring_read)
         pinky_read = scale(float(parsed_data[4]), 0, 100, 5, 175)
         pinky.write_angle(pinky_read)
-        uart.write(data_in + EOL)
+        # first 4 channels are for unimplemented functionality
+        uart.write("0,0,0,0," + data_in + EOL)

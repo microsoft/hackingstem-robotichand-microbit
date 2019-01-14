@@ -1,14 +1,14 @@
-# ------------__ Hacking STEM – glove.py – micro:bit __-----------
+# --------------__ Hacking STEM - glove.py - micro:bit __--------------
 # For use with the Lesson plan available 
 # from Microsoft Education Workshop at http://aka.ms/hackingSTEM
 #
 #  Overview:
 #  This code is one half of the Robotic Hand project, the other half is 
-#  robotic_hand.py. It detects analog voltage levels which correspond to 
-#  deformation of velostat flex sensors attached to the Glove protion of the 
-#  lesson. It then transmits that data over radio to the Robotic Hand. We use 2
-#  micro:bits in this project since the each board only supports up to 6 
-#  analog/pwm pins.
+#  robotic_hand.py. It detects analog voltage levels which correspond
+#  to deformation of velostat flex sensors attached to the Glove 
+#  portion of the lesson. It then transmits that data over radio to 
+#  the Robotic Hand. We use 2 micro:bits in this project since the 
+#  each board only supports up to 6 analog/pwm pins.
 #  
 #  Pins:
 #  0: Thumb
@@ -18,8 +18,8 @@
 #  4: Pinky
 #
 #  Radio Channels:
-#  You can change the radio channel on your micro:bit using Button A to cycle 
-#  down and Button B to cycle up in numbers.
+#  You can change the radio channel on your micro:bit using Button A 
+#  to cycle down and Button B to cycle up in numbers.
 # 
 #  This project uses a BBC micro:bit microcontroller, information at:
 #  https://microbit.org/ 
@@ -29,7 +29,6 @@
 #  http://github.com/[TODO github path to Hacking STEM]
 #
 #  Copyright 2018, Adi Azulay
-#  TODO add Arduino copyright and CC license
 #  Microsoft EDU Workshop - HackingSTEM
 #  MIT License terms detailed in LICENSE.txt
 # ===---------------------------------------------------------------===
@@ -46,8 +45,8 @@ EOL = '\n' # End of Line Character
 chan = 0 # Defualt channel number for radio
 radio.config(length=64, channel=chan)
 
-# Keeping a record of the min and max values allows to scale our readings to 
-# the full range of 0-100.
+# Keeping a record of the min and max values allows to scale our 
+# readings to the full range of 0-100.
 min_max_array = [[1023,0], [1023,0], [1023,0], [1023,0], [1023,0]]
 
 def smooth(pin):
@@ -59,7 +58,7 @@ def smooth(pin):
     return total / 160
 
 def scale(value, inMin, inMax, outMin, outMax):
-    # Remaps a value from one min/max range to a different min/max range
+    # Remaps value from one min/max range to a different min/max range
     return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
 
 def get_sensor_value(pin, pos):

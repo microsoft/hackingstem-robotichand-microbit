@@ -87,7 +87,7 @@ def scale(value, inMin, inMax, outMin, outMax):
 #=============================================================================#
 #------------------------------Main Program Loop------------------------------#
 #=============================================================================#
-while True:
+while True:    
     # Changes the radio channel
     while button_a.is_pressed() and chan != 0:
         chan -= 1

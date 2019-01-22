@@ -79,7 +79,7 @@ def get_sensor_value(pin, pos):
 #=============================================================================#
 #------------------------------Main Program Loop------------------------------#
 #=============================================================================#
-while True:
+while True:    
     # Changes the radio channel
     while button_a.is_pressed() and chan != 0:
         chan -= 1
@@ -107,5 +107,5 @@ while True:
     # Send data to radio
     radio.send(data_to_send)
     # Write data to serial, uart is how you call serial on micro:bit
-    uart.write(data_to_send)
+    uart.write("0,0,0,0," + data_to_send + EOL)
    

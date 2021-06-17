@@ -1,6 +1,8 @@
 # --------------__ Hacking STEM - glove.py - micro:bit __--------------
 # For use with the Lesson plan available 
-# from Microsoft Education Workshop at http://aka.ms/hackingSTEM
+# from Microsoft Education Workshop at 
+# https://www.microsoft.com/en-us/education/education-workshop/robotic-hand.aspx
+# http://aka.ms/hackingSTEM
 #
 #  Overview:
 #  This code is one half of the Robotic Hand project, the other half is 
@@ -26,7 +28,7 @@
 #
 #  Comments, contributions, suggestions, bug reports, and feature
 #  requests are welcome! For source code and bug reports see:
-#  http://github.com/[TODO github path to Hacking STEM]
+#  https://github.com/microsoft/hackingstem-robotichand-microbit
 #
 #  Copyright 2018, Adi Azulay
 #  Microsoft EDU Workshop - HackingSTEM

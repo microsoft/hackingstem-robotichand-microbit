@@ -1,17 +1,17 @@
 # --------------__ Hacking STEM - glove.py - micro:bit __--------------
-# For use with the Lesson plan available 
-# from Microsoft Education Workshop at 
-# https://www.microsoft.com/en-us/education/education-workshop/robotic-hand.aspx
+# For use with the Lesson plan available
+# from Microsoft Education Workshop at
+# https://education.microsoft.com/hackingStem/lesson/20647903
 # http://aka.ms/hackingSTEM
 #
 #  Overview:
-#  This code is one half of the Robotic Hand project, the other half is 
+#  This code is one half of the Robotic Hand project, the other half is
 #  robotic_hand.py. It detects analog voltage levels which correspond
-#  to deformation of velostat flex sensors attached to the Glove 
-#  portion of the lesson. It then transmits that data over radio to 
-#  the Robotic Hand. We use 2 micro:bits in this project since the 
+#  to deformation of velostat flex sensors attached to the Glove
+#  portion of the lesson. It then transmits that data over radio to
+#  the Robotic Hand. We use 2 micro:bits in this project since the
 #  each board only supports up to 6 analog/pwm pins.
-#  
+#
 #  Pins:
 #  0: Thumb
 #  1: Index Finger
@@ -20,11 +20,11 @@
 #  4: Pinky
 #
 #  Radio Channels:
-#  You can change the radio channel on your micro:bit using Button A 
+#  You can change the radio channel on your micro:bit using Button A
 #  to cycle down and Button B to cycle up in numbers.
-# 
+#
 #  This project uses a BBC micro:bit microcontroller, information at:
-#  https://microbit.org/ 
+#  https://microbit.org/
 #
 #  Comments, contributions, suggestions, bug reports, and feature
 #  requests are welcome! For source code and bug reports see:
@@ -47,7 +47,7 @@ EOL = '\n' # End of Line Character
 chan = 0 # Defualt channel number for radio
 radio.config(length=64, channel=chan)
 
-# Keeping a record of the min and max values allows to scale our 
+# Keeping a record of the min and max values allows to scale our
 # readings to the full range of 0-100.
 min_max_array = [[1023,0], [1023,0], [1023,0], [1023,0], [1023,0]]
 
@@ -64,7 +64,7 @@ def scale(value, inMin, inMax, outMin, outMax):
     return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin
 
 def get_sensor_value(pin, pos):
-    # Read voltage from pin, check whether the min/max array needs update, 
+    # Read voltage from pin, check whether the min/max array needs update,
     # remap value from 0 -100
     global min_max_array
     sensor_value = smooth(pin)

@@ -11,7 +11,7 @@ Micropython code for Microsoft Hacking STEM Sensorized Glove and Robotic Hand pr
 
 ## Getting Started
 
-1. Download lesson assets at https://www.microsoft.com/en-us/education/education-workshop/robotic-hand.aspx
+1. Download lesson assets at https://education.microsoft.com/hackingStem/lesson/20647903
 1. Build your Sensorized Glove and Robotic Hand!
 1. Use [Mu](https://codewith.mu/) to flash glove.py to your glove [micro:bit](https://microbit.org/) microcontroller
 1. Use [Mu](https://codewith.mu/) to flash robotic_hand.py to your hand [micro:bit](https://microbit.org/) microcontroller

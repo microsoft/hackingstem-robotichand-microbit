@@ -1,11 +1,13 @@
 # ------------__ Hacking STEM - robotic_hand.py - micro:bit __-----------
-# For use with the Machines That Emulate Humans lesson plan available 
-# from Microsoft Education Workshop at http://aka.ms/hackingSTEM
+# For use with the Lesson plan available
+# from Microsoft Education Workshop at
+# https://education.microsoft.com/hackingStem/lesson/20647903
+# http://aka.ms/hackingSTEM
 #
 #  Overview:
-#  This code is one half of the Robotic Hand project, the other half is 
-#  glove.py. It controls servo motors on the hand portion using numbers recived
-#  over radio from the Glove portion of the project. We use 2 micro:bits in 
+#  This code is one half of the Robotic Hand project, the other half is
+#  glove.py. It controls servo motors on the hand portion using numbers received
+#  over radio from the Glove portion of the project. We use 2 micro:bits in
 #  this project since the each board only supports up to 6 analog/pwm pins.
 #
 #  Pins:
@@ -16,7 +18,7 @@
 #  4: Pinky Servo
 #
 #  Radio Channels:
-#  You can change the radio channel on your micro:bit using Button A to cycle 
+#  You can change the radio channel on your micro:bit using Button A to cycle
 #  down and Button B to cycle up in numbers.
 #  Note: When changing channels the motors may twitch a bit.
 #
